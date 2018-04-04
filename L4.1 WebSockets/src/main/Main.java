@@ -9,11 +9,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 /**
- * @author v.chibrikov
- *         <p/>
- *         Пример кода для курса на https://stepic.org/
- *         <p/>
- *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
+ * main websocket class
  */
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -30,7 +26,9 @@ public class Main {
         handlers.setHandlers(new Handler[]{resource_handler, context});
         server.setHandler(handlers);
 
+
         server.start();
+        java.util.logging.Logger.getGlobal().info("Server started");
         server.join();
     }
 }

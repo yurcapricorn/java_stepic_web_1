@@ -7,11 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * @author v.chibrikov
- *         <p>
- *         Пример кода для курса на https://stepic.org/
- *         <p>
- *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
+ * UsersDAO
  */
 public class UsersDAO {
 
@@ -30,7 +26,7 @@ public class UsersDAO {
         return ((UsersDataSet) criteria.add(Restrictions.eq("name", name)).uniqueResult()).getId();
     }
 
-    public long insertUser(String name) throws HibernateException {
-        return (Long) session.save(new UsersDataSet(name));
+    public long insertUser(String name, String pass) throws HibernateException {
+        return (Long) session.save(new UsersDataSet(name, pass));
     }
 }

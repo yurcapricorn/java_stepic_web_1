@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * @author v.chibrikov
- *         <p>
- *         Пример кода для курса на https://stepic.org/
- *         <p>
- *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
+ * UsersDataSet
  */
 @Entity
 @Table(name = "users")
@@ -22,26 +18,26 @@ public class UsersDataSet implements Serializable { // Serializable Important to
 
     @Column(name = "name", unique = true, updatable = false)
     private String name;
+    @Column(name = "password", updatable = false)
+    private String pass;
 
     //Important to Hibernate!
     @SuppressWarnings("UnusedDeclaration")
     public UsersDataSet() {
     }
 
-    @SuppressWarnings("UnusedDeclaration")
-    public UsersDataSet(long id, String name) {
-        this.setId(id);
-        this.setName(name);
-    }
-
-    public UsersDataSet(String name) {
+    public UsersDataSet(String name, String pass) {
         this.setId(-1);
         this.setName(name);
+        this.setPass(pass);
     }
 
-    @SuppressWarnings("UnusedDeclaration")
     public String getName() {
         return name;
+    }
+
+    public String getPass() {
+        return pass;
     }
 
     public void setName(String name) {
@@ -54,6 +50,10 @@ public class UsersDataSet implements Serializable { // Serializable Important to
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     @Override
